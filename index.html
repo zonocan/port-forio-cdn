@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>miyazono portforio</title>
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous"
+    referrerpolicy="no-referrer"> 
+    <!-- googlefont -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap" rel="stylesheet">
+    <!-- cssファイル -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/work.css">
+    <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+    <div id="app">
+        <!-- header -->
+        <header>
+            <h1 class="logo-area">
+                <img :src="logo_path" alt="logo" class="logo">
+            </h1>
+            <ul class="header-links">
+                <li v-for="(links , link) in header_links"
+                    :key="link"
+                    :class="{ page_active: page_active === link}">
+                    <a href="#"
+                       @click="pageActivate(link)">
+                        {{ links.link }}
+                    </a>
+                </li>
+            </ul>
+            <div class="sns-buger"
+                 :class="{'is-Active' : bugerisActive}"
+                 @click="bugerBtn">
+                <span></span>
+                <span>SNS</span>
+                <span></span>
+            </div>
+        </header>
+
+        <!-- snsナビ -->
+        <nav class="sns-nav"
+             :class="{'isOpened' : bugerisActive}"
+             @click="bugerBtn">
+             <ul class="sns-lists-sp">
+                <snsbuger
+                    v-for="(links,link) in sns_links"
+                    :key="link"
+                    :path="links.path"
+                    :link="links.link"
+                    :label="links.label">
+                </snsbuger>
+            </ul>
+        </nav>
+
+        <!-- about画面 -->
+        <main class="about pages"
+              v-show="page_active === 0">
+
+            <div class="slider-wrapper">
+                <swiper :options="swiperOptions">
+                    <swiper-slide
+                        v-for="(paths,path) in slider_img_lists"
+                        :key="path">
+                        <img :src="paths.path" alt="" class="slider-img">
+                    </swiper-slide>
+                </swiper>
+            </div>
+
+            <div class="sections about-sections">
+                <div class="time-date">
+                    <p class="time">{{ time }}</p>
+                    <p class="date">{{ date }}</p>
+                </div>
+
+                <section class="about-section">
+                    <section-name
+                        v-for="(items,item) in section_name"
+                        :key="item"
+                        :icon_path="items.icon_path"
+                        :txt_path="items.txt_path">
+                    </section-name>
+                </section>
+
+                <section class="about-section">
+                    <section-carrer
+                        v-for="(items,item) in section_carrer"
+                        :key="item"
+                        :icon_path="items.icon_path"
+                        :carrer_1_period="items.carrer_1_period"
+                        :carrer_1="items.carrer_1"
+                        :carrer_2_period="items.carrer_2_period"
+                        :carrer_2="items.carrer_2">
+                    </section-carrer>
+                </section>
+
+                <section class="about-section">
+                    <section-skill
+                        v-for="(items,item) in section_skill"
+                        :key="item"
+                        :icon_path="items.icon_path"
+                        :programming_skill="items.programming_skill"
+                        :tool_skill="items.tool_skill">
+                    </section-skill>
+                </section>
+
+                <section class="about-section">
+                    <section-introduction
+                        v-for="(items,item) in section_introduction"
+                        :key="item"
+                        :icon_path="items.icon_path"
+                        :text="items.text">
+                    </section-introduction>
+                </section>
+
+            </div>
+
+        </main>
+
+        <!-- work画面 -->
+        <main class="works pages"
+              v-show="page_active === 1">   
+            
+            <!-- 背景 -->
+            <div class="backgrount-txt-work">
+                <p>portoforio</p>
+            </div>
+            
+            <article class="works-article">
+                
+                <!-- web -->
+                <section id="web" class="works-section">
+                    <h1 class="work-h1 web-h1">WEB</h1>
+                    <div class="web-wrapper">
+                        <web-thumbnail
+                            v-for="(thumbnails, thumbnail) in web_temp_thumbnail"
+                            :key="thumbnail"
+                            :web_id="thumbnails.web_id"
+                            :web_detail_url="thumbnails.web_detail_url"
+                            :web_pc_path="thumbnails.web_pc_path"
+                            :web_sp_path="thumbnails.web_sp_path"
+                            :web_url="thumbnails.web_url">
+                        </web-thumbnail>
+                    </div>
+                </section>
+                
+                <!-- bp -->
+                <section id="bunner-poster" class="works-section">
+                    <h1 class="work-h1 bp-h1">BUNNER/POSTER</h1>
+                    <div class="items-wrapper">
+                        <works-thumbnail
+                            v-for="(thumbnails, thumbnail) in bp_temp_thumbnail"
+                            :key="thumbnail"
+                            :item_id="thumbnails.bp_id"
+                            :item_path="thumbnails.bp_path"
+                            :item_name="thumbnails.bp_name"
+                            :item_detail_url="thumbnails.bp_detail_url">
+                        </works-thumbnail>
+                    </div>
+                </section>
+                
+                <!-- fashion -->
+                <section id="fashion" class="works-section">
+                    <h1 class="work-h1 fashion-h1">FASHION</h1>
+                    <div class="items-wrapper">
+                        <works-thumbnail
+                            v-for="(thumbnails, thumbnail) in fashion_temp_thumbnail"
+                            :key="thumbnail"
+                            :item_id="thumbnails.fashion_id"
+                            :item_path="thumbnails.fashion_path"
+                            :item_name="thumbnails.fashion_name">
+                        </works-thumbnail>                        
+                    </div>
+                </section>
+
+            </article>
+
+            <!-- sp時のナビ -->
+            <footer class="footer-nav">
+                <div class="footer-inner">
+                    <ul class="work-links">
+                        <li v-for="(links, link) in works_links_sp"
+                            :key="link"
+                            class="work-link">
+                            <a :href="links.link">
+                                <img :src="links.icon_path" alt="footerのアイコン">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
+
+        </main>
+
+        <!-- contact画面 -->
+        <main class="contact pages"
+              v-show="page_active === 2">
+
+              <div class="slider-wrapper">
+                <swiper :options="swiperOptions">
+                    <swiper-slide
+                        v-for="(paths,path) in slider_img_lists"
+                        :key="path">
+                        <img :src="paths.path" alt="" class="slider-img">
+                    </swiper-slide>
+                </swiper>
+            </div> 
+
+            <div class="sections contact-sections">
+                <div class="time-date">
+                    <p class="time">{{ time }}</p>
+                    <p class="date">{{ date }}</p>
+                </div>
+
+                <div class="form-wrap">
+
+                    <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeYvYCu36pISlURfxqiu2IpYzdryksi2irrMNCXCmr6NCS2ng/formResponse" target="_self" method="POST" id="mG61Hd" jsmodel="TOfxwf Q91hve CEkLOc" data-shuffle-seed="-9197287820405030243" data-response="%.@.[]]" data-dlp-data="%.@.null,false,[]]" data-first-entry="0" data-last-entry="3" data-is-first-page="true">
+                        
+                        <section class="contact-section">
+                            <label for="name">お名前</label>
+                            <input type="text" name="entry.1435462610">
+                        </section>
+                        
+                        <section class="contact-section">
+                            <label for="email">メールアドレス</label>
+                            <input type="email" name="entry.2145045544">
+                        </section>
+                        
+                        <section class="contact-section">
+                            <label for="text">お問い合わせ内容</label>
+                            <textarea name="entry.166950144" id="" cols="30" rows="10"></textarea>
+                        </section>
+
+                        <section class="contact-section">
+                            <input type="submit" value="送信">
+                        </section>
+
+                    </form>
+
+                </div>
+
+            </div>
+            
+        </main>
+
+    </div>
+    <!-- vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.11/dist/vue.js"></script>
+    <!-- Swiper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@5.3.6/js/swiper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-awesome-swiper@3.1.2/dist/vue-awesome-swiper.js"></script> 
+    <!-- swiperのcss -->
+    <link href="https://cdn.jsdelivr.net/npm/swiper@5.3.6/css/swiper.min.css" rel="stylesheet">  
+    <!-- axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>  
+    <script src="./js/script.js"></script>
+</body>
+</html>

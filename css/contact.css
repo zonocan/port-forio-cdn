@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+.form-wrap {
+    background-color: var(--contact-form-back-ground-color);
+    width: 98%;
+    margin: 0 auto;
+    padding: 20px 5%;
+}
+
+.contact-section {
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: var(--sp-main-font-size);
+    color: var(--main-font-color);
+    margin-bottom: 5px;
+    font-style: var(--japanese-font-style);
+}
+
+input[type="text"], input[type="email"], textarea {
+    width: 95%;
+}
+
+input[type="submit"] {
+    width: 120px;
+    height: 35px;
+    color: var(--contact-submit-text-color);
+    border: none;
+    border-radius: 5px;
+    background: url(../img/contact/paper-plane-regular\ 1.svg) no-repeat 80% center;
+    background-color: var(--contact-submit-color);   
+    letter-spacing: 0.7em; 
+}

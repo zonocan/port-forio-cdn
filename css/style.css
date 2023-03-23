@@ -1,0 +1,99 @@
+@charset "UTF-8";
+/* 色とフォントスタイルの指定 */
+:root {
+    /* メイン色の指定 */
+    /* ヘッダーの色 */
+    --header-color: rgba(255, 255, 255, 0.8);
+    /* aboutのセクションカラー */
+    --about-section-color: rgba(255, 255, 255, 0.6);
+    /* work */
+    --work-body-color: #EFEFEF;
+    --work-web-color: #0F71D8;
+    --work-bunner-poster-color: #CD1E2B;
+    --work-fashion-color: #111111;
+    --work-items-background-color: #fff;
+    --footer-color: rgba(255, 255, 255, 0.6); 
+    /* contact */
+    --contact-form-back-ground-color: rgba(255, 255, 255, 0.6);
+    --contact-form-color: #fff;
+    --contact-form-boder-color: #111;
+    --contact-submit-color: #0F71D8;
+
+    /* フォントの色の指定 */
+    --main-font-color:  #3B3A3A;
+    --time-date-color: #fff;
+    --contact-submit-text-color: #fff;
+
+    /* フォントの指定 */
+    --header-font-style: Arial;
+    --work-h1-font-style: Arial;
+    --port-forio-font: 'Beth Ellen', cursive;
+    --japanese-font-style: 'Zen Kaku Gothic New', sans-serif;
+
+
+    /* 文字の大きさ */
+    --sp-main-font-size: 10px;
+    --port-forio-font-size: 70px;
+    --work-h1-font-size-sp: 20px;
+    --work-item-name-size-sp: 15px;
+
+    /* z-index */
+    --header-z-index: 100;
+    --work-z-index: 10;
+    --works-nav-z-index: 20;
+    --works-port-forio-z-index: 1;
+
+    /* 余白 */
+    --works-sp-m-p-b: 25px;
+
+    /* 行間 */
+    --header-line-height: 50px;
+    
+}
+
+
+/*　スライダー（about/contact）  */
+.slider-wrapper {
+    height: 100vh;
+    position: relative;
+}
+
+.slider-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* swiperの高さ */
+.swiper-container {
+    height: 100vh;
+}
+/*  */
+
+.sections {
+    position: absolute;
+    z-index: 10;
+    width: 90%;
+    top: 80px;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+
+/*  */
+.time-date {
+    color: var(--time-date-color);
+    margin-bottom: 25px;
+}
+
+.time-date p{
+    text-align: center;
+}
+
+.time {
+    font-size: 25px;
+}
+
+.date {
+    font-size: 10px;
+}
