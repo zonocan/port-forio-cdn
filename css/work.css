@@ -195,7 +195,11 @@ footer {
     margin: 10px auto;
 }
 
-#scllor-bar {
+.scllor-bar {
+    display: none;
+}
+
+.scllor-bar-brock {
     display: none;
 }
 
