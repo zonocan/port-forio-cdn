@@ -36,6 +36,10 @@ header {
     line-height: var(--header-line-height);
 }
 
+.header-sns-link-pc {
+    display: none;
+}
+
 /*  */
 .header-links li.page_active {
     border-bottom: 1px solid var(--main-font-color);
@@ -123,4 +127,41 @@ header {
 
 .sns-list-sp img {
     margin: 0 20px;
+}
+
+@media screen and (min-width: 960px) {
+
+    .logo-area img {
+        margin: 0 auto;
+    }
+
+    .sns-buger {
+        display: none;
+    }
+
+    .header-links {
+        width: 30%;
+        margin: 0 2% 0 35%;
+    }
+
+    .header-sns-link-pc {
+        /* display: block; */
+        display: flex;
+        justify-content: space-between;
+        width: 10%;
+    }
+
+    .header-sns-link-pc li {
+        width: 40%;
+    }
+
+    .header-sns-link-pc img {
+        /* text-align: center; */
+        margin: 15px auto;
+    }
+
+    .header-links a{
+        font-size: var(--pc-main-font-size);
+    }
+
 }

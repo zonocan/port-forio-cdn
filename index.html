@@ -25,9 +25,11 @@
     <div id="app">
         <!-- header -->
         <header>
+
             <h1 class="logo-area">
                 <img :src="logo_path" alt="logo" class="logo">
             </h1>
+
             <ul class="header-links">
                 <li v-for="(links , link) in header_links"
                     :key="link"
@@ -38,6 +40,16 @@
                     </a>
                 </li>
             </ul>
+
+            <ul class="header-sns-link-pc">
+                <li v-for="(links , link) in sns_links"
+                    :key="link">
+                    <a :href="links.link" target="_blank">
+                        <img :src="links.path" alt="">
+                    </a>
+                </li>
+            </ul>
+
             <div class="sns-buger"
                  :class="{'is-Active' : bugerisActive}"
                  @click="bugerBtn">
@@ -45,6 +57,7 @@
                 <span>SNS</span>
                 <span></span>
             </div>
+
         </header>
 
         <!-- snsナビ -->
@@ -134,6 +147,28 @@
             <div class="backgrount-txt-work">
                 <p>portoforio</p>
             </div>
+
+            <!-- scllor-bar(PC)(before) -->
+            <div class="scllor-bar" @mouseover="navMouseOverAction"></div>
+
+            <!--  -->
+            <div class="scllor-bar-brock"
+                 :class="{'is-Active' : nav_bar_flag}"
+                 @mouseover="navMouseOverAction"
+                 @click="navDisplayNone">
+                <div class="scllor-bar-nav-wrapper">
+                    <ul class="work-bar-links">
+                        <li v-for="(links,link) in works_links_pc"
+                            :key="link"
+                            class="work-bar-link">
+                            <a :href="links.link">
+                                <img :src="links.icon_path" alt="アイコンの画像">
+                                <span>{{ links.label }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
             
             <article class="works-article">
                 
@@ -216,6 +251,7 @@
             </div> 
 
             <div class="sections contact-sections">
+
                 <div class="time-date">
                     <p class="time">{{ time }}</p>
                     <p class="date">{{ date }}</p>
@@ -243,8 +279,10 @@
                         <section class="contact-section">
                             <input type="submit" value="送信">
                         </section>
-
+                            
                     </form>
+                    <!--  iframeタグを追加 -->
+                    <iframe name="dummy" style="display:none;"></iframe>
 
                 </div>
 
@@ -260,8 +298,6 @@
     <script src="https://cdn.jsdelivr.net/npm/vue-awesome-swiper@3.1.2/dist/vue-awesome-swiper.js"></script> 
     <!-- swiperのcss -->
     <link href="https://cdn.jsdelivr.net/npm/swiper@5.3.6/css/swiper.min.css" rel="stylesheet">  
-    <!-- axios -->
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>  
     <script src="./js/script.js"></script>
 </body>
 </html>

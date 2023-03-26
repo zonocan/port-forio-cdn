@@ -33,3 +33,11 @@
 .carrer-wrapper {
     display: flex;
 }
+
+@media screen and (min-width: 960px) {
+    
+    .about-section-wrapper {
+        margin-bottom: 50px;
+        font-size: var(--pc-main-font-size);
+    } 
+}

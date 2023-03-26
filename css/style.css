@@ -23,6 +23,7 @@
     --main-font-color:  #3B3A3A;
     --time-date-color: #fff;
     --contact-submit-text-color: #fff;
+    --work-nav-bar-color: #fff;
 
     /* フォントの指定 */
     --header-font-style: Arial;
@@ -36,6 +37,8 @@
     --port-forio-font-size: 70px;
     --work-h1-font-size-sp: 20px;
     --work-item-name-size-sp: 15px;
+    /* PC */
+    --pc-main-font-size: 12px;
 
     /* z-index */
     --header-z-index: 100;
@@ -96,4 +99,13 @@
 
 .date {
     font-size: 10px;
+}
+
+
+@media screen and (min-width: 960px) {
+    
+    .sections {
+        width: 60%;
+    }
+
 }

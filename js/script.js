@@ -184,7 +184,7 @@ const webThumbnail = Vue.component('web-thumbnail', {
         </ul>
         <p class="web-url-area">
             <span>URL:</span>
-            <a href="web_url" target="_blank">{{ web_url }}</a>
+            <a :href="web_url" target="_blank">{{ web_url }}</a>
         </p>
     </div>
     `
@@ -223,7 +223,7 @@ const worksThumbnail = Vue.component('works-thumbnail', {
         </ul>
     </div>
     `
-})
+});
 
 const app = new Vue({
     el: '#app',
@@ -400,7 +400,7 @@ const app = new Vue({
             }],
                 
 
-            // works/nav
+            // works/nav(sp)
             works_links_sp: [{
                 link: '#web',
                 icon_path: './img/works/icon/icon-1.svg',
@@ -411,6 +411,26 @@ const app = new Vue({
                 link: '#fashion' ,
                 icon_path: './img/works/icon/icon-3.svg',               
             }],
+
+            // works/nav(pc)
+            works_links_pc: [{
+                link: '#web',
+                icon_path: './img/works/icon/icon-1-white.svg',
+                label: 'web',
+            },{
+                link: '#bunner-poster',  
+                icon_path: './img/works/icon/icon-2-white.svg',
+                label: 'bunner-poster',
+            },{
+                link: '#fashion' ,
+                icon_path: './img/works/icon/icon-3-white.svg',    
+                label: 'fashion',           
+            }],
+
+            nav_bar_flag: false,
+
+            nav_bar_remove: null,
+
         };       
     },
     methods: {
@@ -431,6 +451,15 @@ const app = new Vue({
             this.time = currentDate.getHours() + ':' + currentDate.getMinutes();
             this.date = currentDate.getFullYear() + '年' + (currentDate.getMonth()+1) + '月' + currentDate.getDate() + '日' + this.week[currentDate.getDay()];
         }, 
+
+        // works ナビ
+        navMouseOverAction() {
+            this.nav_bar_flag = true;
+        },
+
+        navDisplayNone() {
+            this.nav_bar_flag = false;
+        }
 
     },
     mounted(){
