@@ -429,7 +429,9 @@ const app = new Vue({
 
             nav_bar_flag: false,
 
-            nav_bar_remove: null,
+            // contact
+            submitted: false,
+
 
         };       
     },
@@ -459,11 +461,23 @@ const app = new Vue({
 
         navDisplayNone() {
             this.nav_bar_flag = false;
+        },
+
+        // contact
+        formCompleteModal() {
+            this.submitted = !this.submitted;
         }
 
     },
     mounted(){
         setInterval(this.updateTime,1000);
+
+        // 
+        var iframe = document.createElement("iframe");
+        iframe.setAttribute('name','hidden_iframe');
+        iframe.setAttribute('style','display: none');
+        document.body.appendChild(iframe);
+
     },
 
 

@@ -259,7 +259,10 @@
 
                 <div class="form-wrap">
 
-                    <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeYvYCu36pISlURfxqiu2IpYzdryksi2irrMNCXCmr6NCS2ng/formResponse" target="_self" method="POST" id="mG61Hd" jsmodel="TOfxwf Q91hve CEkLOc" data-shuffle-seed="-9197287820405030243" data-response="%.@.[]]" data-dlp-data="%.@.null,false,[]]" data-first-entry="0" data-last-entry="3" data-is-first-page="true">
+                    <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeYvYCu36pISlURfxqiu2IpYzdryksi2irrMNCXCmr6NCS2ng/formResponse" 
+                          target="hidden_iframe" method="POST" id="mG61Hd" jsmodel="TOfxwf Q91hve CEkLOc" data-shuffle-seed="-9197287820405030243" 
+                          data-response="%.@.[]]" data-dlp-data="%.@.null,false,[]]" data-first-entry="0" data-last-entry="3" data-is-first-page="true" 
+                          target="hidden_iframe" key="1" v-show="!submitted">
                         
                         <section class="contact-section">
                             <label for="name">お名前</label>
@@ -284,10 +287,19 @@
                     <!--  iframeタグを追加 -->
                     <iframe name="dummy" style="display:none;"></iframe>
 
-                </div>
+                </div>            
 
             </div>
-            
+
+            <!--  -->
+            <div class="form-complete"
+                 key="2"
+                 v-show="submitted">
+                <div class="form-complete-inner">
+                    <p>お問い合わせありがとうございます</p>
+                </div>    
+            </div>
+                            
         </main>
 
     </div>
