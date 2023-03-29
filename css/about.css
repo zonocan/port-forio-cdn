@@ -40,4 +40,8 @@
         margin-bottom: 50px;
         font-size: var(--pc-main-font-size);
     } 
+
+    .about-section {
+        height: 85px;
+    }
 }
