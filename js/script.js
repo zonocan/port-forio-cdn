@@ -1,6 +1,12 @@
 // swiperの読み込み
 Vue.use(VueAwesomeSwiper);
 
+// VeeValidateの読み込み
+Vue.use(VeeValidate, {
+    locale: 'ja',
+    events: 'input|blur|focus'
+});
+
 // バーガーナビ（SNS）
 const snsBuger = Vue.component('snsbuger', {
     props: {
@@ -172,12 +178,12 @@ const webThumbnail = Vue.component('web-thumbnail', {
     <div class="web-thumbnail" :id="web_id">
         <ul class="web-img-area">
             <li class="web-pc-area">
-                <a href="web_detail_url" target="_blank">
+                <a :href="web_detail_url" target="_blank">
                     <img :src="web_pc_path">
                 </a>
             </li>
             <li class="web-sp-area">
-                <a href="web_detail_url" target="_blank">
+                <a :href="web_detail_url" target="_blank">
                     <img :src="web_sp_path" alt="ポートフォリオの画像">
                 </a>
             </li>            
@@ -225,6 +231,9 @@ const worksThumbnail = Vue.component('works-thumbnail', {
     `
 });
 
+// contact
+
+
 const app = new Vue({
     el: '#app',
     components: {
@@ -234,7 +243,7 @@ const app = new Vue({
         'section-skill' : sectionSkill,
         'section-introduction' : sectionIntroduction,
         'web-thumbnail' : webThumbnail,
-        'works-thumbnail' : worksThumbnail
+        'works-thumbnail' : worksThumbnail,
     },
     data() {
         return{
@@ -317,12 +326,11 @@ const app = new Vue({
             // 自己紹介
             section_introduction: [{
                 icon_path: './img/about/icon/icon-4.png',
-                text: `texttexttexttexttexttexttexttexttexttext
-                texttexttexttexttexttexttexttexttext
-                texttexttexttexttexttexttexttexttexttext
-                texttexttexttexttexttexttexttexttexttext
-                texttexttexttexttexttexttexttext
-                texttexttexttexttexttexttexttexttexttext
+                text: `初めまして。宮園雄太郎と申します。
+                趣味は将棋、ボードスポーツ、洋服作り、旅行など多岐に渡ります。
+                私自身、IT業界の経験としましては1年間SESとして稼働して参りました。
+                しかし、どうしてもデザインに関わりたいと思い、現在webデザイナーとしての道を
+                模索中です。まだまだ、経験不足の点はたくさんあるかと思いますが何卒よろしくお願い致します。
                 `
             }],
 
@@ -331,13 +339,13 @@ const app = new Vue({
             // works/web
             web_temp_thumbnail: [{
                 web_id: 'web_id_1',
-                web_detail_url: '',
+                web_detail_url: 'https://zonocan.github.io/yours_vue_cdn/',
                 web_pc_path: './img/works/web-pc-img/web-pc-img-1.png',
                 web_sp_path: './img/works/web-sp-img/web-sp-sp-1.png',
-                web_url: ' https://zonocan.github.io/yours_vue_cdn/',    
+                web_url: 'https://zonocan.github.io/yours_vue_cdn/',    
             },{
                 web_id: 'web_id_2',
-                web_detail_url: '',
+                web_detail_url: 'https://zonocan.github.io/anniversarry/',
                 web_pc_path: './img/works/web-pc-img/web-pc-img-2.png',
                 web_sp_path: './img/works/web-sp-img/web-sp-sp-2.png',
                 web_url: 'https://zonocan.github.io/anniversarry/',  
@@ -472,7 +480,7 @@ const app = new Vue({
     mounted(){
         setInterval(this.updateTime,1000);
 
-        // 
+        // iframeの無効
         var iframe = document.createElement("iframe");
         iframe.setAttribute('name','hidden_iframe');
         iframe.setAttribute('style','display: none');
